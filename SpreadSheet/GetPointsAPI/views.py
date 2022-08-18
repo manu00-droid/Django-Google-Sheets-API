@@ -13,9 +13,8 @@ def getPoints(request):
     sh = gc.open("test_sheet")
     print(sh)
     points_array=sh.sheet1.get_all_values()
-    points_snapped=gmc.snap_to_roads(path=points_array,interpolate=True)
-    print(points_snapped)
-    return Response(sh.sheet1.get_all_values())
+
+    return Response(points_array)
     
 # def pointsToString(point_array):
 #     points_string=""

@@ -13,11 +13,21 @@ while(1):
     sh = gc.open("test_sheet")
     print(sh)
     points_array=sh.sheet1.get_all_values()
-    try:
-        points_snapped=gmc.snap_to_roads(path=points_array[flag:],interpolate=True)
-        flag=len(points_array)
-    except:
-        print("No Points updated!")
+    flag2=flag
+    for i in range(flag2+100,len(points_array),100):
+        try:
+            points_snapped=gmc.snap_to_roads(path=points_array[flag2:i],interpolate=True)
+            
+            flag2=i
+            
+        except:
+            print("No Points updated!")
+            break
+    for i in range(flag,flag2):
+        sh.update_cell(i,1,points_snapped[i-flag][0])
+        sh.update_cell(i,2,points_snapped[i-flag][1])
+        
+    flag=flag2
     t.sleep(86000)
     
 
