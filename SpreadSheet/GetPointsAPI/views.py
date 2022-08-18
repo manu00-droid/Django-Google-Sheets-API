@@ -3,7 +3,7 @@ from rest_framework.response import Response
 import gspread
 import requests
 
-global flag
+global points_array
 
 
 @api_view(['GET'])
@@ -12,9 +12,9 @@ def getPoints(request):
     print(gc)
     sh = gc.open("test_sheet")
     print(sh)
-    print(sh.sheet1.get_all_values())
+    points_array=sh.sheet1.get_all_values()
     return Response(sh.sheet1.get_all_values())
-
+    
 
 def snapToRoads():
     points=""
