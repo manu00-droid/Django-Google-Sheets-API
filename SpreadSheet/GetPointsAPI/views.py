@@ -2,8 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import gspread
 import requests
-
 import googlemaps as gm
+
 key="AIzaSyDhwmI3NkM9HWlohjrZQksbAetQ-M7ZOvQ"
 gmc=gm.Client(key=key)
 @api_view(['GET'])
@@ -15,21 +15,17 @@ def getPoints(request):
     points_array=sh.sheet1.get_all_values()
 
     return Response(points_array)
+ 
+@api_view(['POST'])
+def snapPoly(request):
+    points=request.data["point"]
+    points_snapped=[]
+    prev=0
+    for i in range(100,len(points),100):
+        points_snapped.append(gmc.snap_to_roads(path=points[prev:i],interpolate=True))
+        prev=i
+    points_snapped.append(gmc.snap_to_roads(path=points[prev:len(points)],interpolate=True))
+    print(points_snapped)
+    return Response(points_snapped)
     
-# def pointsToString(point_array):
-#     points_string=""
-#     for i in point_array:
-#         current_points_string="%2C".join(str(i[0]),str(i[1]))
-#         points_string="%7C".join(points_string,current_points_string)
-#     return points_string
-
-# def snapToRoads():
-#     points=""
-#     url = f"https://roads.googleapis.com/v1/snapToRoads?path={points}&interpolate=true&key=AIzaSyDhwmI3NkM9HWlohjrZQksbAetQ-M7ZOvQ"
-
-#     payload = {}
-#     headers = {}
-
-#     response = requests.request("GET", url, headers=headers, data=payload)
-
-#     print(response.text)
+        

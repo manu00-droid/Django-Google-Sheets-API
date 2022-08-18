@@ -16,7 +16,7 @@ while(1):
     flag2=flag
     for i in range(flag2+100,len(points_array),100):
         try:
-            points_snapped=gmc.snap_to_roads(path=points_array[flag2:i],interpolate=True)
+            points_snapped=gmc.snap_to_roads(path=points_array[flag2:i],interpolate=False)
             
             flag2=i
             
