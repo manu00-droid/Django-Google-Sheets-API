@@ -23,6 +23,7 @@ while(1):
         except:
             print("No Points updated!")
             break
+        print("Update Successful")
     for i in range(flag,flag2):
         sh.update_cell(i,1,points_snapped[i-flag][0])
         sh.update_cell(i,2,points_snapped[i-flag][1])
