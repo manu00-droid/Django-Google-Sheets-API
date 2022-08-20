@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-(+@vvrrvlgri-s^@uqh!vuwg&m&sztw##*6q$m2*&_g!9(h0c4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'GetPointsAPI.apps.GetpointsapiConfig',
     'rest_framework',
     'corsheaders',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
