@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('getpoints', views.getPoints),
-    path('addpoint/', views.addPoint),
+    path('snapPoly',views.snapPoly)
 ]
