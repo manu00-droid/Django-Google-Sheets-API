@@ -136,5 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 gsc = gspread.service_account(filename='SpreadSheet/testproject-347704-46bae9ce3d03.json')
-google_sheet = gsc.open("test_sheet")
+google_sheet = gsc.open("UL_GPS_Data")
 
