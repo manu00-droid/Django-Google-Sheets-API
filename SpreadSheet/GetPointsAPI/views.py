@@ -11,6 +11,7 @@ from SpreadSheet import settings
 def getPoints(request):
     sh=settings.google_sheet
     points_array=sh.sheet1.get_all_values()
+    points_array=points_array[1:]
     print(points_array[0])
     for i in range(len(points_array)):
         points_array[i]=[points_array[i][1],points_array[i][2]]
