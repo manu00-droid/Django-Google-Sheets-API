@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
+import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import gspread
-
+import googlemaps
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -131,5 +132,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-gc = gspread.service_account(filename='GetPointsAPI/testproject-347704-46bae9ce3d03.json')
-google_sheet = gc.open("test_sheet")
+
+
+
+gsc = gspread.service_account(filename='SpreadSheet/testproject-347704-46bae9ce3d03.json')
+google_sheet = gsc.open("test_sheet")
+
