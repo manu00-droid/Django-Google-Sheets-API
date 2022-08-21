@@ -1,1 +1,1 @@
-# Djanog-Google-Sheets-API
+# Django-Google-Sheets-API
