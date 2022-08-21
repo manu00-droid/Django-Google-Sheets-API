@@ -11,12 +11,8 @@ from SpreadSheet import settings
 
 @api_view(['GET'])
 def getPoints(request):
-    gc = gspread.service_account(filename='GetPointsAPI/testproject-347704-46bae9ce3d03.json')
-    print(gc)
-    sh = gc.open("test_sheet")
-    print(sh)
+    sh=settings.google_sheet
     points_array=sh.sheet1.get_all_values()
-
     return Response(points_array)
 
 
